@@ -1,0 +1,24 @@
+{
+  "name": "monopoly-game",
+  "version": "1.0.0",
+  "description": "网页版大富翁小游戏 - 掷骰子、移动、买地、收租、破产全流程",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test --experimental-test-isolation=none test/utils.test.js test/game-engine.test.js test/integration.test.js",
+    "test:unit": "node --test --experimental-test-isolation=none test/utils.test.js test/game-engine.test.js",
+    "test:integration": "node --test --experimental-test-isolation=none test/integration.test.js"
+  },
+  "keywords": [
+    "monopoly",
+    "board-game",
+    "multiplayer"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

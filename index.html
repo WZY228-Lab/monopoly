@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D 大富翁 · CYBER MONOPOLY</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <!-- ============ 设置屏 ============ -->
+  <section id="setup" class="screen setup">
+    <h1 class="game-title">3D 大富翁</h1>
+    <p class="subtitle">C Y B E R &nbsp; M O N O P O L Y</p>
+
+    <div class="mode-tabs">
+      <button id="tab-local" class="tab active">🎮 单机</button>
+      <button id="tab-online" class="tab">🌐 联机</button>
+    </div>
+
+    <div class="setup-panel">
+      <!-- 单机 -->
+      <div id="local-pane">
+        <div class="field-label">选择玩家人数</div>
+        <div id="count-btns" class="count-btns"></div>
+        <div class="field-label">玩家设置 <span class="hint">（点击右侧按钮切换 真人 / 电脑AI）</span></div>
+        <div id="player-rows" class="player-rows"></div>
+        <button id="btn-start" class="btn-gold">开始游戏</button>
+      </div>
+
+      <!-- 联机 -->
+      <div id="online-pane" hidden>
+        <div id="online-forms">
+          <div class="field-label">① 创建房间（当房主，把房间号发给朋友）</div>
+          <div class="join-row">
+            <input id="host-name" type="text" maxlength="10" placeholder="你的昵称" />
+            <button id="btn-create-room" class="btn-inline">创建房间</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="field-label">② 加入房间（输入房主分享的房间号）</div>
+          <div class="join-row join-row-3">
+            <input id="room-code" type="text" maxlength="32" placeholder="房间号" />
+            <input id="join-name" type="text" maxlength="10" placeholder="昵称" />
+            <button id="btn-join-room" class="btn-inline">加入</button>
+          </div>
+        </div>
+
+        <div id="online-lobby" hidden>
+          <div class="room-code-label">房间号（发给朋友）</div>
+          <div id="room-code-display" class="room-code" title="点击复制"></div>
+          <div class="field-label">房间玩家</div>
+          <div id="room-players" class="player-rows"></div>
+          <div class="btn-group-row">
+            <button id="btn-room-ai" class="btn-inline">➕ 添加 AI</button>
+            <button id="btn-room-start" class="btn-inline btn-room-start">▶ 开始游戏</button>
+            <button id="btn-room-leave" class="btn-inline btn-room-leave">离开</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 游戏屏 ============ -->
+  <section id="game" class="screen game" hidden>
+    <div class="game-layout">
+      <div id="board" class="board"></div>
+
+      <aside class="sidebar">
+        <div class="panel">
+          <h2>玩家信息</h2>
+          <div id="player-list" class="player-list"></div>
+        </div>
+
+        <div class="panel">
+          <h2>操作</h2>
+          <div id="turn-indicator" class="turn-indicator">—</div>
+          <div class="action-btns">
+            <button id="btn-roll" class="act-btn act-gold">🎲 掷骰子</button>
+            <button id="btn-build" class="act-btn act-blue">🏠 建房子</button>
+            <button id="btn-buy" class="act-btn act-green" hidden>购买地产</button>
+            <button id="btn-skip" class="act-btn act-gray" hidden>放弃购买</button>
+            <button id="btn-bail" class="act-btn act-warn" hidden>保释 $50</button>
+            <button id="btn-restart" class="act-btn act-red">🔄 重新开始</button>
+          </div>
+          <div id="build-hint" class="build-hint" hidden>👆 点击棋盘上你拥有的彩色地块即可建房</div>
+        </div>
+
+        <div class="panel log-panel">
+          <h2>游戏日志</h2>
+          <div id="log" class="log"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 结果弹窗 -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-content">
+      <h2 id="modal-title">游戏结束</h2>
+      <p id="modal-body"></p>
+      <div class="modal-btns">
+        <button id="btn-again" class="btn-gold">再来一局</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

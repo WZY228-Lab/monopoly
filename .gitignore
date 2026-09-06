@@ -1,0 +1,16 @@
+# 依赖与临时产物
+node_modules/
+.npm-cache/
+npm-debug.log*
+
+# 运行时生成
+data/
+*.tmp
+
+# 打包/工具产物
+dist/
+tools/
+
+# 系统
+Thumbs.db
+.DS_Store
